@@ -2,9 +2,12 @@
 
 var user = {
 
-    txtColor: '#050505',
+    txtColor: '',
     bgColor: '',
-    birthDate: ''
+    birthDate: '',
+    email: '',
+    age:'',
+    birthTime:'',
 
 }
 
@@ -19,6 +22,10 @@ function loadUserData() {
     const elbody = document.querySelector('body')
     elbody.style.backgroundColor = user.bgColor
     elbody.style.color = user.txtColor
+
+    // const elH2SpanBod = document.querySelector('.user-bod')
+    // elH2SpanBod.innerText = user.birthDate
+
     
 }
 
@@ -42,20 +49,36 @@ function AddUserPref(ev) {
     elbody.style.color = user.txtColor
 
     const elDob = document.getElementById('dob').value
-    console.log(elDob)
     const elH2SpanBod = document.querySelector('.user-bod')
-    console.log(elH2SpanBod)
-    elH2SpanBod.innerText = elDob
+    elH2SpanBod.innerText = elDob 
+    user.birthDate = elDob
 
+    // const elEmail = document.getElementById('email').value
+    // user.email = elEmail
 
+    const elH2BirthTime = document.getElementById('birthtime').value
+    const elH2SpanBirthTime = document.querySelector('.user-birthtime')
 
-    
+     elH2SpanBirthTime.innerText = elH2BirthTime 
+    user.birthDate = elH2BirthTime
+
 
     _saveUserPrefs()
 
 }
 
 
+
+
+function showAge(newVal) {
+    document.getElementById('sAge').innerHTML = newVal
+    user.age = newVal
+}
+
+function showColor(newVal) {
+    document.getElementById('bgcolor').innerHTML = newVal
+    // user.age = newVal
+}
 
 
 

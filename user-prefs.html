@@ -1,43 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User preferences</title>
-    <link rel="icon" href="img/gmaps.png" type="image/x-icon"/>
+    <link rel="icon" href="img/gmaps.png" type="image/x-icon" />
     <link rel="stylesheet" href="css/user-prefs.css">
 </head>
+
 <body>
     <h1>User preferences</h1>
 
-    <header> 
+    <header>
         <a href="index.html">Home</a>
         <a href="user-prefs.html">User preferences</a>
         <a href="map.html">Places</a>
     </header>
 
-    <h2>Your birth of Date is:<span class="user-bod"></span>
+
+
+
+    <form id="frmRdgister" onsubmit="AddUserPref(event)">
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" />
+        <label for="color">Set Text color</label>
+        <input type="color" id="color" name="color" value="#000000">
+        <label onchange="showColor(this.value)" for="bgcolor">Set Bgc color</label>
+        <input type="color" id="bgcolor" name="bgcolor" value="#f7f7f7">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" name="dob" id="dob">
+        <label for="age">Age: <span id="sAge">26</span></label>
+        <input type="range" id="age" name="age" step="10" min="18" max="120" value="26"
+            onchange="showAge(this.value)" />
+        <label for="birthtime">Birth Time:</label>
+        <input type="time" id="birthtime" name="birthtime" />
+
+
+        <button>Set</button>
+
+    </form>
+
+    <h2>Your birth of Date is: <span class="user-bod"></span>
+    </h2>
+
+    <h2>Your birth Time is: <span class="user-birthtime"></span>
     </h2>
 
 
-<form id="frmRdgister" onsubmit="AddUserPref(event)">
-    <label for="email">Email</label>
-    <input type="email" name="email">
-    <label for="color">Set Text color</label>
-    <input type="color" id="color" name="color" value="#000000">
-    <label for="bgcolor">Set Bgc color</label>
-    <input type="color" id="bgcolor" name="bgcolor" value="#f7f7f7">
-    <label for="dob">Date of Birth:</label>
-    <input type="date" name="dob" id="dob">
-    <button>Set</button>
 
-</form>
-
-
-    
     <script src="js/utilService.js"></script>
     <script src="js/storageService.js"></script>
     <script src="js/userService.js"></script>
     <script src="js/placeService.js"></script>
 </body>
+
 </html>
