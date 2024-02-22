@@ -34,3 +34,16 @@ li:hover {
     margin: 0 auto;
     transition: 10s;
 }
+
+button {
+    cursor: pointer;
+
+}
+
+button img {
+    display: flex;
+    width: 2em;
+
+    
+    }
+    

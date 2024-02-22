@@ -1,7 +1,7 @@
 'use strict'
 
 var gMap
-
+var gMarkers = []
 function onInit() {
     renderPlaces()
     gMap = initMap()
@@ -21,57 +21,62 @@ function renderPlaces() {
     elPlacesList.innerHTML = strHTMLs.join('')
     console.log(places)
 
-   
+
 }
 
+function getPosition() {
+
+    if (!navigator.geolocation) {
+        alert('HTML5 Geolocation is not supported in your browser')
+        return
+    }
+    navigator.geolocation.getCurrentPosition(showLocation, handleLocationError)
+
+}
+
+function showLocation(position) {
+    const { latitude: lat, longitude: lng } = position.coords
+
+    gMap.setCenter({ lat, lng })
+    gMap.setZoom(15)
+
+
+}
+
+function renderMarkers() {
+    const places = getPlaces()
+    // remove previous markers
+    gMarkers.forEach(marker => marker.setMap(null))
+    // every place is creating a marker
+    gMarkers = places.map(place => {
+    return new google.maps.Marker({
+    position: place,
+    map: gMap,
+    title: place.name
+    })
+    })
+    }
 
 
 function onRemovePlace(placeId) {
     console.log(placeId)
     removePlace(placeId)
     renderPlaces()
+    renderMarkers()
 
 }
 
 
-  
+
 function onGoToPlace(placeId) {
     const place = getPlace(placeId)
     const lat = place.lat
     const lng = place.lng
-   
+
     gMap.setCenter({ lat, lng })
+    gMap.setZoom(place.zoom)
+    renderMarkers()
 }
-
-
-
-
-    // function initMap() {
-    //     const myLatlng = { lat: -25.363, lng: 131.044 };
-    //     const map = new google.maps.Map(document.getElementById("map"), {
-    //       zoom: 4,
-    //       center: myLatlng,
-    //     });
-    //     const marker = new google.maps.Marker({
-    //       position: myLatlng,
-    //       map,
-    //       title: "Click to zoom",
-    //     });
-      
-    //     map.addListener("center_changed", () => {
-    //       // 3 seconds after the center of the map has changed, pan back to the
-    //       // marker.
-    //       window.setTimeout(() => {
-    //         map.panTo(marker.getPosition());
-    //       }, 3000);
-    //     });
-    //     marker.addListener("click", () => {
-    //       map.setZoom(8);
-    //       map.setCenter(marker.getPosition());
-    //     });
-    //   }
-      
-    //   window.initMap = initMap;
 
 
 function initMap(lat = 29.557669, lng = 34.951923) {
@@ -92,12 +97,13 @@ function initMap(lat = 29.557669, lng = 34.951923) {
     map.addListener('click', ev => {
         console.log('dd')
         const name = prompt('Place name?', 'Place 1')
+        if(!name) return
         const lat = ev.latLng.lat()
         const lng = ev.latLng.lng()
         addPlace(name, lat, lng, gMap.getZoom())
         renderPlaces()
-        })
-
+        renderMarkers()
+    })
     return map
 }
 

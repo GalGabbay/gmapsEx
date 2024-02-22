@@ -42,8 +42,8 @@ function getPlace(placeId){
 
 function _createPlaces() {
     gPlaces = [
-        _createPlace(32.085300, 34.781769, 'Tel-Aviv'),
-        _createPlace(40.741895, -73.989308, 'New-York'),
+        _createPlace(32.085300, 34.781769, 'Tel-Aviv', zoom = 10),
+        _createPlace(40.741895, -73.989308, 'New-York', zoom = 10),
 
     ]
 
