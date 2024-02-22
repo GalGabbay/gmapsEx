@@ -4,11 +4,12 @@
 
 var Places_DB = 'placesData'
 
-
-
-var gPlaces = loadFromStorage(Places_DB) || _createPlaces()
-
 _createPlaces()
+
+
+var gPlaces = loadFromStorage(Places_DB) || gPlaces
+
+
 
 function getPlaces() {
     return gPlaces
@@ -18,7 +19,7 @@ function getPlaces() {
 function removePlace(placeId) {
     const idx = gPlaces.findIndex((place) => place.id === placeId)
     gPlaces.splice(idx, 1)
-    _savePlaces
+    _savePlaces()
 
 }
 
