@@ -32,4 +32,5 @@ li:hover {
     width: 70vw;
     height: 40vh;
     margin: 0 auto;
+    transition: 10s;
 }

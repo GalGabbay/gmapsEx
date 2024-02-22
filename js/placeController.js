@@ -1,10 +1,10 @@
 'use strict'
 
-
+var gMap
 
 function onInit() {
-    renderPlaces() 
-
+    renderPlaces()
+    gMap = initMap()
 }
 
 
@@ -21,30 +21,60 @@ function renderPlaces() {
     elPlacesList.innerHTML = strHTMLs.join('')
     console.log(places)
 
-    initMap(29.557669,34.951923)
-    // initMap(place.lat,place.lng)
+   
 }
 
 
 
-function onRemovePlace (placeId){
+function onRemovePlace(placeId) {
     console.log(placeId)
     removePlace(placeId)
     renderPlaces()
-    
+
 }
 
 
-
-function onGoToPlace(){
-
+  
+function onGoToPlace(placeId) {
+    const place = getPlace(placeId)
+    const lat = place.lat
+    const lng = place.lng
+   
     gMap.setCenter({ lat, lng })
-
 }
 
 
-function initMap(lat, lng) {
 
+
+    // function initMap() {
+    //     const myLatlng = { lat: -25.363, lng: 131.044 };
+    //     const map = new google.maps.Map(document.getElementById("map"), {
+    //       zoom: 4,
+    //       center: myLatlng,
+    //     });
+    //     const marker = new google.maps.Marker({
+    //       position: myLatlng,
+    //       map,
+    //       title: "Click to zoom",
+    //     });
+      
+    //     map.addListener("center_changed", () => {
+    //       // 3 seconds after the center of the map has changed, pan back to the
+    //       // marker.
+    //       window.setTimeout(() => {
+    //         map.panTo(marker.getPosition());
+    //       }, 3000);
+    //     });
+    //     marker.addListener("click", () => {
+    //       map.setZoom(8);
+    //       map.setCenter(marker.getPosition());
+    //     });
+    //   }
+      
+    //   window.initMap = initMap;
+
+
+function initMap(lat = 29.557669, lng = 34.951923) {
     const elMap = document.querySelector('.map')
     const mapOptions = {
         center: { lat, lng },
@@ -58,6 +88,17 @@ function initMap(lat, lng) {
         title: 'Hello World!'
     }
     const marker = new google.maps.Marker(markerOptions)
+
+    map.addListener('click', ev => {
+        console.log('dd')
+        const name = prompt('Place name?', 'Place 1')
+        const lat = ev.latLng.lat()
+        const lng = ev.latLng.lng()
+        addPlace(name, lat, lng, gMap.getZoom())
+        renderPlaces()
+        })
+
+    return map
 }
 
 function handleLocationError(error) {

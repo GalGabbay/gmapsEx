@@ -16,6 +16,14 @@ function getPlaces() {
 
 }
 
+function addPlace(name, lat, lng, zoom) {
+    const place = _createPlace(lat, lng, name, zoom)
+    gPlaces.push(place)
+
+    _savePlaces()
+    return place 
+}
+
 function removePlace(placeId) {
     const idx = gPlaces.findIndex((place) => place.id === placeId)
     gPlaces.splice(idx, 1)
@@ -23,25 +31,33 @@ function removePlace(placeId) {
 
 }
 
+function getPlace(placeId){
+    const place = gPlaces.find(place => place.id === placeId)
+    console.log(place)
+    return place
+
+}
+
 
 
 function _createPlaces() {
     gPlaces = [
-        _createPlace(32.1416, 34.831213, 'tel-aviv'),
-        _createPlace(33, 33, 'new-york'),
+        _createPlace(32.085300, 34.781769, 'Tel-Aviv'),
+        _createPlace(40.741895, -73.989308, 'New-York'),
 
     ]
 
 }
 
 
-function _createPlace(lat, lng, name) {
+function _createPlace(lat, lng, name, zoom) {
 
     return {
         id: makeId(),
         lat,
         lng,
         name,
+        zoom,
     }
 }
 
