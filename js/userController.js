@@ -1,6 +1,5 @@
 'use strict'
 
-
 var gUser = {
 
     txtColor: '#000000',
@@ -12,17 +11,12 @@ var gUser = {
 
 }
 
-
-
 var USER_DB = 'userData'
-
 
 
 loadUserData()
 
-
 function loadUserData() {
-
 
     var gUser = loadFromStorage(USER_DB) || gUser
 
@@ -30,11 +24,11 @@ function loadUserData() {
     elbody.style.backgroundColor = gUser.bgColor
     elbody.style.color = gUser.txtColor
 
-    // const elH2SpanBod = document.querySelector('.user-bod')
-    // elH2SpanBod.innerText = gUser.birthDate
+    const elH2SpanBod = document.querySelector('.user-bod')
+    elH2SpanBod.innerText = gUser.birthDate
 
-    // document.getElementById('age').value = gUser.age
-    // showAge(gUser.age)
+    document.getElementById('age').value = gUser.age
+    showAge(gUser.age)
 
 }
 
@@ -45,10 +39,6 @@ function loadUserData() {
 
 function addUserPref(ev) {
 
-    if(!gUser) {
-
-
-    }
     ev.preventDefault()
 
 
@@ -67,9 +57,8 @@ function addUserPref(ev) {
     elH2SpanBod.innerText = elDob
     gUser.birthDate = elDob
     console.log(elDob)
-
-    const elEmail = document.getElementById('email').value
-    gUser.email = elEmail
+    // const elEmail = document.getElementById('email').value
+    // user.email = elEmail
 
     const elH2BirthTime = document.getElementById('birthtime').value
     const elH2SpanBirthTime = document.querySelector('.user-birthtime')

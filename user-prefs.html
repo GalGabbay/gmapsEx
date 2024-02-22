@@ -10,20 +10,20 @@
 </head>
 
 <body>
-    <h1>User preferences</h1>
+    <h1>User Preferences</h1>
 
     <header>
         <a href="index.html">Home</a>
-        <a href="user-prefs.html">User preferences</a>
+        <a href="user-prefs.html">User Preferences</a>
         <a href="map.html">Places</a>
     </header>
 
 
 
 
-    <form id="frmRdgister" onsubmit="AddUserPref(event)">
+    <form id="frmRdgister" onsubmit="addUserPref(event)">
         <label for="email">E-mail:</label>
-        <input type="email" name="email" />
+        <input type="email" id="email"name="email" />
         <label for="color">Set Text color</label>
         <input type="color" id="color" name="color" value="#000000">
         <label onchange="showColor(this.value)" for="bgcolor">Set Bgc color</label>
@@ -53,6 +53,8 @@
     <script src="js/storageService.js"></script>
     <script src="js/userService.js"></script>
     <script src="js/placeService.js"></script>
+    <script src="js/placeController.js"></script>
+
 </body>
 
 </html>
