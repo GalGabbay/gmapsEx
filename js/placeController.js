@@ -1,6 +1,7 @@
 'use strict'
 
 
+
 function onInit() {
     renderPlaces() 
 
@@ -12,8 +13,8 @@ function renderPlaces() {
     const places = getPlaces()
     const strHTMLs = places.map(place => `
         <li>${place.name}
-            <button onclick="onRemovePlace(event,'${place.id}')">X</button>
-            <button onclick="onAddPlace(event,'${place.id}')">Go</button>
+            <button onclick="onRemovePlace('${place.id}')">X</button>
+            <button onclick="onGoToPlace('${place.id}')">Go</button>
         </li>
     `)
     const elPlacesList = document.querySelector('.places-list')
@@ -24,16 +25,20 @@ function renderPlaces() {
     // initMap(place.lat,place.lng)
 }
 
+
+
 function onRemovePlace (placeId){
-    
+    console.log(placeId)
     removePlace(placeId)
+    renderPlaces()
     
 }
 
 
 
-function onAddPlace(){
+function onGoToPlace(){
 
+    gMap.setCenter({ lat, lng })
 
 }
 

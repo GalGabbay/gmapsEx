@@ -6,7 +6,8 @@ var Places_DB = 'placesData'
 
 
 
-var gPlaces
+var gPlaces = loadFromStorage(Places_DB) || _createPlaces()
+
 _createPlaces()
 
 function getPlaces() {
@@ -14,11 +15,12 @@ function getPlaces() {
 
 }
 
-// function removePlace(placeId) {
-//     const placeId = gPlaces.findIndex(place => place.id === placeId)
-//     gPlaces.splice(placeId, 1)
+function removePlace(placeId) {
+    const idx = gPlaces.findIndex((place) => place.id === placeId)
+    gPlaces.splice(idx, 1)
+    _savePlaces
 
-// }
+}
 
 
 
@@ -43,3 +45,7 @@ function _createPlace(lat, lng, name) {
 }
 
 
+function _savePlaces() {
+
+    saveToStorage(Places_DB, gPlaces)
+}
