@@ -5,21 +5,28 @@
 body {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(236, 229, 229);
 
 }
 
 .places-list {
 
-    /* display: flex;
-    flex-direction: column; */
     margin-inline: auto;
-    width: 200px;
+    width: 300px;
 
 }
+
 
 li {
     padding: 5px 5px;
+    
 }
+
+li :nth-child(1) {
+    margin-left: 10px;
+
+}
+
 
 
 
@@ -29,15 +36,15 @@ li:hover {
 }
 
 .map {
-    width: 70vw;
-    height: 40vh;
+    width: 80vw;
+    height: 50vh;
     margin: 0 auto;
     transition: 10s;
+    border: 1px solid lightgray;
 }
 
 button {
     cursor: pointer;
-
 }
 
 button img {
@@ -45,5 +52,31 @@ button img {
     width: 2em;
 
     
+    }
+
+   
+    
+    h1 {
+        position: relative;
+        content: '';
+        background-color: pink;
+    }
+    
+    h1::before {
+        position: absolute;
+        content: 'click on the map your desired destination';
+        width: 100px;
+        background-color: pink;
+        left: 3%;
+        padding: 3px 6px;
+        opacity: 0;
+        transition: 2s;
+        top: -0.5em;
+    
+    }
+    
+    h1:hover::before {
+    
+        opacity: 1;
     }
     

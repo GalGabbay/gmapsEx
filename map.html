@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="css/map.css">
     </head>
     <body onload="onInit()">
+        <h1>Places</h1>
 
         <header>
             <a href="index.html">Home</a>
@@ -13,11 +14,9 @@
             <a href="map.html">Places</a>
         </header>
 
-        
         <ul class="places-list"></ul>
-        <button onclick="getPosition()" class="my-loc"><img src="img/myloc.png" alt=""></button>
+        <button title="my location" onclick="getPosition()" class="my-loc"><img src="img/myloc.png" alt=""></button>
     
-
         <p id="locationError"></p>
         <div class="map"></div>
 

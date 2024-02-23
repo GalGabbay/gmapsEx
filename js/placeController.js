@@ -7,21 +7,18 @@ function onInit() {
     gMap = initMap()
 }
 
-
 function renderPlaces() {
 
     const places = getPlaces()
     const strHTMLs = places.map(place => `
         <li>${place.name}
             <button onclick="onRemovePlace('${place.id}')">X</button>
-            <button onclick="onGoToPlace('${place.id}')">Go</button>
+            <button onclick="onGoToPlace('${place.id}')">Travel</button>
         </li>
     `)
     const elPlacesList = document.querySelector('.places-list')
     elPlacesList.innerHTML = strHTMLs.join('')
     console.log(places)
-
-
 }
 
 function getPosition() {
@@ -31,7 +28,6 @@ function getPosition() {
         return
     }
     navigator.geolocation.getCurrentPosition(showLocation, handleLocationError)
-
 }
 
 function showLocation(position) {
@@ -39,8 +35,6 @@ function showLocation(position) {
 
     gMap.setCenter({ lat, lng })
     gMap.setZoom(15)
-
-
 }
 
 function renderMarkers() {
@@ -57,13 +51,11 @@ function renderMarkers() {
     })
     }
 
-
 function onRemovePlace(placeId) {
     console.log(placeId)
     removePlace(placeId)
     renderPlaces()
     renderMarkers()
-
 }
 
 
@@ -77,7 +69,6 @@ function onGoToPlace(placeId) {
     gMap.setZoom(place.zoom)
     renderMarkers()
 }
-
 
 function initMap(lat = 29.557669, lng = 34.951923) {
     const elMap = document.querySelector('.map')

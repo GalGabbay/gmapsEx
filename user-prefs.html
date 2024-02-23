@@ -18,9 +18,6 @@
         <a href="map.html">Places</a>
     </header>
 
-
-
-
     <form id="frmRdgister" onsubmit="addUserPref(event)">
         <label for="email">E-mail:</label>
         <input type="email" id="email"name="email" />
@@ -35,19 +32,8 @@
             onchange="showAge(this.value)" />
         <label for="birthtime">Birth Time:</label>
         <input type="time" id="birthtime" name="birthtime" />
-
-
         <button>Set</button>
-
     </form>
-
-    <h2>Your birth of Date is: <span class="user-bod"></span>
-    </h2>
-
-    <h2>Your birth Time is: <span class="user-birthtime"></span>
-    </h2>
-
-
 
     <script src="js/utilService.js"></script>
     <script src="js/storageService.js"></script>
@@ -55,8 +41,6 @@
     <script src="js/placeService.js"></script>
     <script src="js/placeController.js"></script>
     <script src="js/userController.js"></script>
-
-
 </body>
 
 </html>

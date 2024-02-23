@@ -2,17 +2,9 @@
 
 function addUserPref(ev) {
     ev.preventDefault()
-console.log('setting form')
-    if(!gUser) {
-
-
-    }
-
 
     const elColor = document.getElementById('color').value
     const elBgColor = document.getElementById('bgcolor').value
-
-    console.log(elBgColor)
     
     gUser.bgColor = elBgColor
     gUser.txtColor = elColor
@@ -22,21 +14,23 @@ console.log('setting form')
     elbody.style.color = gUser.txtColor
 
     const elDob = document.getElementById('dob').value
-    const elH2SpanBod = document.querySelector('.user-bod')
-    elH2SpanBod.innerText = elDob
     gUser.birthDate = elDob
-    console.log(elDob)
+
+    const elH2BirthTime = document.getElementById('birthtime').value
+    gUser.birthTime = elH2BirthTime
 
     const elEmail = document.getElementById('email').value
     gUser.email = elEmail
 
-    const elH2BirthTime = document.getElementById('birthtime').value
-    const elH2SpanBirthTime = document.querySelector('.user-birthtime')
+    _saveUserPrefs(gUser)
+}
 
-    elH2SpanBirthTime.innerText = elH2BirthTime
-    gUser.birthDate = elH2BirthTime
+function showAge(newVal) {
+    document.getElementById('sAge').innerHTML = newVal
+    gUser.age = newVal
+}
 
-
-    _saveUserPrefs()
-
+function showColor(newVal) {
+    document.getElementById('bgcolor').innerHTML = newVal
+    gUser.age = newVal
 }
