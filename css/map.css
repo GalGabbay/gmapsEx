@@ -36,7 +36,7 @@ li:hover {
 }
 
 .map {
-    width: 80vw;
+    width: 50vw;
     height: 50vh;
     margin: 0 auto;
     transition: 10s;
